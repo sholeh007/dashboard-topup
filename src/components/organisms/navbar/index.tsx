@@ -1,8 +1,8 @@
 export default function Navbar() {
   return (
     <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-      <a className="navbar-brand ps-3" href="index.html">
-        Start Bootstrap
+      <a className="navbar-brand ps-3" href="/">
+        Store Up
       </a>
 
       <button
@@ -12,26 +12,7 @@ export default function Navbar() {
         <i className="fas fa-bars"></i>
       </button>
 
-      <form className="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        <div className="input-group">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Search for..."
-            aria-label="Search for..."
-            aria-describedby="btnNavbarSearch"
-          />
-          <button
-            className="btn btn-primary"
-            id="btnNavbarSearch"
-            type="button"
-          >
-            <i className="fas fa-search"></i>
-          </button>
-        </div>
-      </form>
-
-      <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+      <ul className="navbar-nav ms-sm-auto ms-md-auto me-3 me-lg-4">
         <li className="nav-item dropdown">
           <a
             className="nav-link dropdown-toggle"
@@ -41,7 +22,7 @@ export default function Navbar() {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            <i className="fas fa-user fa-fw"></i>
+            username
           </a>
           <ul
             className="dropdown-menu dropdown-menu-end"
@@ -49,12 +30,7 @@ export default function Navbar() {
           >
             <li>
               <a className="dropdown-item" href="#!">
-                Settings
-              </a>
-            </li>
-            <li>
-              <a className="dropdown-item" href="#!">
-                Activity Log
+                Profile
               </a>
             </li>
             <li>

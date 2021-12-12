@@ -1,6 +1,7 @@
 import TransformChar from "../../../../lib/first-char-upper";
 import { Fragment } from "react";
 import { listMaster, listMetodePembanyaran } from "./list-sidebar";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const master = listMaster();
@@ -15,22 +16,20 @@ export default function Sidebar() {
         <div className="sb-sidenav-menu">
           <div className="nav">
             <div className="sb-sidenav-menu-heading">Beranda</div>
-            <a className="nav-link active" href="index.html">
+            <Link className="nav-link active" to="/">
               <div className="sb-nav-link-icon">
                 <i className="fas fa-tachometer-alt"></i>
               </div>
               Dashboard
-            </a>
+            </Link>
             <div className="sb-sidenav-menu-heading">Master</div>
             {master.map((item, i) => (
-              <Fragment key={i}>
-                <a className="nav-link" href="index.html">
-                  <div className="sb-nav-link-icon">
-                    <i className={`fas ${item.icon}`}></i>
-                  </div>
-                  {TransformChar(item.title)}
-                </a>
-              </Fragment>
+              <Link className="nav-link" to={`/${item.link}`} key={i}>
+                <div className="sb-nav-link-icon">
+                  <i className={`fas ${item.icon}`}></i>
+                </div>
+                {TransformChar(item.title)}
+              </Link>
             ))}
             <div className="sb-sidenav-menu-heading">Metode Pembanyaran</div>
             {metode.map((item, i) => (

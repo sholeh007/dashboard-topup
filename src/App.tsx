@@ -1,21 +1,16 @@
-import Footer from "./components/organisms/footer";
-import MainContent from "./components/organisms/main-content";
-import Navbar from "./components/organisms/navbar";
-import Sidebar from "./components/organisms/sidebar";
-import styles from "./app.module.css";
+import "./app.css";
+import { Routes, Route } from "react-router-dom";
+import Home from "./page/Home";
+import Category from "./page/Category";
+import NotFound from "./404";
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <div id="layoutSidenav">
-        <Sidebar />
-        <div id="layoutSidenav_content" className={styles.content}>
-          <MainContent />
-          <Footer />
-        </div>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/category" element={<Category />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 

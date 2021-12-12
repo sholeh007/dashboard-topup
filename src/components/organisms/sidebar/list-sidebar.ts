@@ -3,14 +3,17 @@ export function listMaster() {
     {
       icon: "fa-list-alt",
       title: "category",
+      link: "category",
     },
     {
       icon: "fa-tasks",
       title: "nominal",
+      link: "nominal",
     },
     {
       icon: "fa-tags",
       title: "voucher",
+      link: "voucher",
     },
   ];
 }

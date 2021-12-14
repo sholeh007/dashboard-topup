@@ -1,16 +1,18 @@
+import ContentHome from "../components/organisms/content-home";
 import Footer from "../components/organisms/footer";
-import MainContent from "../components/organisms/main-content";
 import Navbar from "../components/organisms/navbar";
 import Sidebar from "../components/organisms/sidebar";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <div id="layoutSidenav">
+      <div id="wrapper">
         <Sidebar />
-        <div id="layoutSidenav_content" className="content">
-          <MainContent />
+        <div id="content-wrapper" className="d-flex flex-column content">
+          <div id="content">
+            <Navbar />
+            <ContentHome />
+          </div>
           <Footer />
         </div>
       </div>

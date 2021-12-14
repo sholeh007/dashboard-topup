@@ -5,17 +5,15 @@ import Sidebar from "../components/organisms/sidebar";
 
 export default function Home() {
   return (
-    <>
-      <div id="wrapper">
-        <Sidebar />
-        <div id="content-wrapper" className="d-flex flex-column content">
-          <div id="content">
-            <Navbar />
-            <ContentHome />
-          </div>
-          <Footer />
+    <div id="wrapper">
+      <Sidebar active="/" />
+      <div id="content-wrapper" className="d-flex flex-column content">
+        <div id="content">
+          <Navbar />
+          <ContentHome />
         </div>
+        <Footer />
       </div>
-    </>
+    </div>
   );
 }

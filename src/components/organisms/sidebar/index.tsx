@@ -1,10 +1,14 @@
 import ctx from "classnames";
-import upperFirst from "../../../../lib/first-char-upper";
-import { useState } from "react";
+import MenuItem from "./menu-item";
+import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { Master, Pembanyaran } from "./list-menu";
 
-export default function Sidebar() {
+interface propsType {
+  active: string;
+}
+
+export default function Sidebar({ active }: propsType) {
   const [toggle, setToggle] = useState(false);
   const styleNav = ctx({
     "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion": true,
@@ -29,43 +33,37 @@ export default function Sidebar() {
 
       <hr className="sidebar-divider my-0" />
 
-      <li className="nav-item active">
-        <Link className="nav-link" to="/">
-          <i className="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span>
-        </Link>
-      </li>
+      <MenuItem
+        icon="fa-fw fa-tachometer-alt"
+        title="Dashboard"
+        link="/"
+        active={active}
+      />
 
       <hr className="sidebar-divider" />
       <div className="sidebar-heading">Master</div>
       {Master.map((item, i) => (
-        <li className="nav-item" key={i}>
-          <Link className="nav-link" to={`/${item.link}`}>
-            <i className={`fas ${item.icon}`}></i>
-            <span>{upperFirst(item.title)}</span>
-          </Link>
-        </li>
+        <Fragment key={i}>
+          <MenuItem
+            icon={item.icon}
+            link={item.link}
+            title={item.link}
+            active={active}
+          />
+        </Fragment>
       ))}
 
       <hr className="sidebar-divider" />
       <div className="sidebar-heading">Pembanyaran</div>
       {Pembanyaran.map((item, i) => (
-        <li className="nav-item" key={i}>
-          <Link className="nav-link" to={`/${item.link}`}>
-            <i className={`fas ${item.icon}`}></i>
-            <span>{upperFirst(item.title)}</span>
-          </Link>
-        </li>
+        <Fragment key={i}>
+          <MenuItem icon={item.icon} link={item.link} title={item.link} />
+        </Fragment>
       ))}
 
       <hr className="sidebar-divider" />
       <div className="sidebar-heading">Transaction</div>
-      <li className="nav-item">
-        <Link className="nav-link" to="/transaksi">
-          <i className="fas fa-shopping-cart"></i>
-          <span>Transaction</span>
-        </Link>
-      </li>
+      <MenuItem link="/transaksi" icon="fa-shopping-cart" title="Transaction" />
 
       <hr className="sidebar-divider d-none d-md-block" />
 

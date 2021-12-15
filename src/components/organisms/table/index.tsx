@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import { useTable } from "react-table";
+import Button from "../../atoms/button";
 
 export default function Table() {
   const data = useMemo(
@@ -11,10 +12,6 @@ export default function Table() {
       {
         col1: "react-table",
         col2: "rocks",
-      },
-      {
-        col1: "Whatever",
-        col2: "you want",
       },
     ],
     []
@@ -30,6 +27,30 @@ export default function Table() {
         Header: "Column 2",
         accessor: "col2",
       },
+      {
+        Header: "Action",
+        id: "edit",
+        Cell: ({ row }: any) => (
+          <>
+            <Button
+              btncolor="danger"
+              size="sm"
+              onClick={() => console.log(row.id)}
+            >
+              <i className="fas fa-trash"></i>
+            </Button>
+            <span className="ml-3">
+              <Button
+                btncolor="primary"
+                size="sm"
+                onClick={() => console.log(row.id)}
+              >
+                <i className="fas fa-edit"></i>
+              </Button>
+            </span>
+          </>
+        ),
+      },
     ],
     []
   );
@@ -40,7 +61,7 @@ export default function Table() {
     tableInstance;
 
   return (
-    <table className="table" {...getTableProps()}>
+    <table className="table table-hover" {...getTableProps()}>
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>

@@ -33,7 +33,8 @@ export default function Table() {
         Cell: ({ row }: any) => (
           <>
             <Button
-              btncolor="danger"
+              type="button"
+              btnColor="danger"
               size="sm"
               onClick={() => console.log(row.id)}
             >
@@ -41,7 +42,8 @@ export default function Table() {
             </Button>
             <span className="ml-3">
               <Button
-                btncolor="primary"
+                type="button"
+                btnColor="primary"
                 size="sm"
                 onClick={() => console.log(row.id)}
               >

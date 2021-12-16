@@ -47,7 +47,7 @@ export default function Sidebar({ active }: propsType) {
           <MenuItem
             icon={item.icon}
             link={item.link}
-            title={item.link}
+            title={item.title}
             active={active}
           />
         </Fragment>
@@ -57,7 +57,7 @@ export default function Sidebar({ active }: propsType) {
       <div className="sidebar-heading">Pembanyaran</div>
       {Pembanyaran.map((item, i) => (
         <Fragment key={i}>
-          <MenuItem icon={item.icon} link={item.link} title={item.link} />
+          <MenuItem icon={item.icon} link={item.link} title={item.title} />
         </Fragment>
       ))}
 

@@ -1,18 +1,27 @@
 import ctx from "classnames";
+import { MouseEventHandler, ReactNode } from "react";
 
-export default function Button(props: any) {
-  const { children, type, disabled, id, btncolor, size } = props;
-  const styleBtn = ctx("btn", `btn-${btncolor}`, {
+interface propsType {
+  children: ReactNode;
+  type: "button" | "submit";
+  disabled?: boolean;
+  btnColor: string;
+  size?: string;
+  onClick?: MouseEventHandler;
+}
+
+export default function Button(props: propsType) {
+  const { children, type, disabled, btnColor, size, onClick } = props;
+  const styleBtn = ctx("btn", `btn-${btnColor}`, {
     [`btn-${size}`]: size === "sm" || size === "lg",
   });
 
   return (
     <button
       className={styleBtn}
-      id={id}
       type={type}
-      {...props}
       disabled={disabled}
+      onClick={onClick}
     >
       {children}
     </button>

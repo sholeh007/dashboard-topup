@@ -1,17 +1,17 @@
 export const Master = [
   {
     title: "category",
-    link: "category",
+    link: "/category",
     icon: "fa-clipboard-list",
   },
   {
     title: "nominal",
-    link: "nominal",
+    link: "/nominal",
     icon: "fa-tasks",
   },
   {
     title: "voucher",
-    link: "voucher",
+    link: "/voucher",
     icon: "fa-tags",
   },
 ];
@@ -19,12 +19,12 @@ export const Master = [
 export const Pembanyaran = [
   {
     title: "bank",
-    link: "bank",
+    link: "/bank",
     icon: "fa-university",
   },
   {
     title: "metode pembanyaran",
-    link: "pembanyaran",
+    link: "/pembanyaran",
     icon: "fa-credit-card",
   },
 ];

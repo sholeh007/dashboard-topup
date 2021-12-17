@@ -8,3 +8,9 @@ export async function createCategory(data: any) {
 
   return json;
 }
+
+export async function getCategory() {
+  const json = await ky.get(`${config.api}/category`).json();
+
+  return json;
+}

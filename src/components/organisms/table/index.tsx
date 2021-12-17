@@ -1,62 +1,11 @@
-import { useMemo } from "react";
 import { useTable } from "react-table";
-import Button from "../../atoms/button";
 
-export default function Table() {
-  const data = useMemo(
-    () => [
-      {
-        col1: "Hello",
-        col2: "World",
-      },
-      {
-        col1: "react-table",
-        col2: "rocks",
-      },
-    ],
-    []
-  );
+interface propsType {
+  data: any;
+  columns: any;
+}
 
-  const columns: any = useMemo(
-    () => [
-      {
-        Header: "Column 1",
-        accessor: "col1",
-      },
-      {
-        Header: "Column 2",
-        accessor: "col2",
-      },
-      {
-        Header: "Action",
-        id: "edit",
-        Cell: ({ row }: any) => (
-          <>
-            <Button
-              type="button"
-              btnColor="danger"
-              size="sm"
-              onClick={() => console.log(row.id)}
-            >
-              <i className="fas fa-trash"></i>
-            </Button>
-            <span className="ml-3">
-              <Button
-                type="button"
-                btnColor="primary"
-                size="sm"
-                onClick={() => console.log(row.id)}
-              >
-                <i className="fas fa-edit"></i>
-              </Button>
-            </span>
-          </>
-        ),
-      },
-    ],
-    []
-  );
-
+export default function Table({ data, columns }: propsType) {
   const tableInstance = useTable({ columns, data });
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =

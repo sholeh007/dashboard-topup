@@ -1,7 +1,7 @@
 import "./app.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./page/Home";
-import Category from "./page/Category/Category";
+import Category from "./page/Category";
 import FormCategory from "./page/Category/Form";
 import NotFound from "./404";
 

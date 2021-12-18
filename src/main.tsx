@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./App";
+import { ToastContainer } from "react-toastify";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import App from "./App";
 
 const queryClient = new QueryClient();
 
@@ -12,6 +13,7 @@ ReactDOM.render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <App />
+        <ToastContainer />
         <ReactQueryDevtools initialIsOpen={false} />
       </BrowserRouter>
     </QueryClientProvider>

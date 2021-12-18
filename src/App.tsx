@@ -11,7 +11,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/category" element={<Category />} />
-      <Route path="/category/form" element={<FormCategory />} />
+      <Route path="/category/form" element={<FormCategory />}>
+        <Route path=":categoryId" element={<FormCategory />} />
+      </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

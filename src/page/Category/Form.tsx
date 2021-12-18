@@ -8,26 +8,54 @@ import Button from "../../components/atoms/button";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { schemaCategory } from "../../helper/validation";
-import { useNavigate } from "react-router-dom";
-import { createCategory } from "../../api/category";
-import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  createCategory,
+  editCategory,
+  singleCategory,
+} from "../../api/category";
+import { useEffect, useState } from "react";
 import Spinner from "../../components/atoms/spinners";
 
 export default function FormCategory() {
   const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { categoryId } = useParams();
+
   const {
     register,
     handleSubmit,
+    setValue,
     setError,
     formState: { errors },
   } = useForm({ resolver: joiResolver(schemaCategory) });
 
+  async function getSingleCategory() {
+    const { data }: any = await singleCategory(categoryId);
+    setValue("category", data.name);
+  }
+
+  useEffect(() => {
+    if (!categoryId) return;
+    getSingleCategory();
+  }, [getSingleCategory]);
+
   const onSubmit = async (form: any) => {
     try {
       setLoading(!isLoading);
-      const data: any = await createCategory(form);
-      navigate("/category", { state: data.message, replace: true });
+      if (categoryId) {
+        await editCategory(categoryId, form);
+        navigate("/category", {
+          state: { success: "1", message: "editing" },
+          replace: true,
+        });
+        return setLoading(false);
+      }
+      await createCategory(form);
+      navigate("/category", {
+        state: { success: "1", message: "adding" },
+        replace: true,
+      });
       setLoading(false);
     } catch (err: any) {
       if (err.response.status === 406) setLoading(false);

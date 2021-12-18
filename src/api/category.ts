@@ -19,3 +19,15 @@ export async function delCategory(id: string) {
 
   return json;
 }
+
+export async function singleCategory(id: string | undefined) {
+  const json = await ky.get(`${config.api}/category?id=${id}`).json();
+  return json;
+}
+
+export async function editCategory(id: string, data: any) {
+  const json = await ky
+    .put(`${config.api}/category/${id}`, { json: { name: data.category } })
+    .json();
+  return json;
+}

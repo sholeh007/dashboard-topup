@@ -21,8 +21,8 @@ export default function Category() {
     toastId: "1",
   };
 
-  if (state === "success") {
-    toast.success("Success add category", options);
+  if (state?.success) {
+    toast.success(`Success ${state.message} category`, options);
   }
 
   function handleAdd() {
@@ -35,6 +35,10 @@ export default function Category() {
     if (!conf) return;
     await delCategory(id);
     toast.success("delete success", options);
+  }
+
+  function handleUpdate(id: string) {
+    navigate(`/category/form/${id}`);
   }
 
   const { data, isError, isLoading, isSuccess } = useQuery(
@@ -66,7 +70,7 @@ export default function Category() {
                 type="button"
                 btnColor="primary"
                 size="sm"
-                onClick={() => console.log(row.original._id)}
+                onClick={() => handleUpdate(row.original._id)}
               >
                 <i className="fas fa-edit"></i>
               </Button>

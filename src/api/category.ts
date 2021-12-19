@@ -1,5 +1,5 @@
 import ky from "ky";
-import { config } from "../../app/config";
+import { config } from "../../config";
 
 export async function createCategory(data: any) {
   const json = await ky

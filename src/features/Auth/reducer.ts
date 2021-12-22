@@ -12,12 +12,13 @@ interface propType {
 }
 
 export default function reducer(state = initState, action: propType) {
-  switch (action.type) {
-    case USER_LOGIN:
-      return { user: action.user, token: action.token };
-    case USER_LOGOUT:
-      return { user: null, token: null };
-    default:
-      return state;
-  }
+  const handlers: any = {
+    [USER_LOGIN]: () => ({ user: action.user, token: action.token }),
+    [USER_LOGOUT]: () => ({ user: null, token: null }),
+  };
+
+  const handle = handlers[action.type];
+  if (!handle) return state;
+
+  return handle();
 }

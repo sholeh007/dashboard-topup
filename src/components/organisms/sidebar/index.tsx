@@ -3,20 +3,24 @@ import MenuItem from "./menu-item";
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { Master, Pembanyaran } from "./list-menu";
+import { useSelector, useDispatch } from "react-redux";
+import { setToggle } from "../../../features/ToggleSidebar/action";
 
 interface propsType {
   active: string;
 }
 
 export default function Sidebar({ active }: propsType) {
-  const [toggle, setToggle] = useState(false);
+  const state: any = useSelector<any>((state) => state.toggled);
+  const dispatch = useDispatch();
+
   const styleNav = ctx({
     "navbar-nav bg-gradient-primary sidebar sidebar-dark accordion": true,
-    toggled: toggle,
+    toggled: state.isToggle,
   });
 
   function handleMenu() {
-    setToggle(!toggle);
+    dispatch(setToggle(!state.isToggle));
   }
 
   return (

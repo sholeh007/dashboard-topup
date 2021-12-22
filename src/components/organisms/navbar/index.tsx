@@ -1,4 +1,14 @@
+import { useSelector, useDispatch } from "react-redux";
+import { setToggle } from "../../../features/ToggleSidebar/action";
+
 export default function Navbar() {
+  const state: any = useSelector<any>((state) => state.toggled);
+  const dispatch = useDispatch();
+
+  function handleToggle() {
+    dispatch(setToggle(!state.isToggle));
+  }
+
   return (
     <nav
       className=" 
@@ -11,8 +21,8 @@ export default function Navbar() {
   "
     >
       <button
-        id="sidebarToggleTop"
         className="btn btn-link d-md-none rounded-circle mr-3"
+        onClick={handleToggle}
       >
         <i className="fa fa-bars"></i>
       </button>

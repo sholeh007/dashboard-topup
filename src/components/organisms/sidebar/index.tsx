@@ -1,6 +1,6 @@
 import ctx from "classnames";
 import MenuItem from "./menu-item";
-import { Fragment, useState } from "react";
+import { Fragment, memo } from "react";
 import { Link } from "react-router-dom";
 import { Master, Pembanyaran } from "./list-menu";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,7 +10,7 @@ interface propsType {
   active: string;
 }
 
-export default function Sidebar({ active }: propsType) {
+function Sidebar({ active }: propsType) {
   const state: any = useSelector<any>((state) => state.toggled);
   const dispatch = useDispatch();
 
@@ -81,3 +81,5 @@ export default function Sidebar({ active }: propsType) {
     </ul>
   );
 }
+
+export default memo(Sidebar);

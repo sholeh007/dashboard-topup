@@ -38,7 +38,7 @@ export default function FormCategory() {
   useEffect(() => {
     if (!categoryId) return;
     getSingleCategory();
-  }, [getSingleCategory]);
+  }, []);
 
   const onSubmit = async (form: any) => {
     try {

@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { setToggle } from "../../../features/ToggleSidebar/action";
+import { memo } from "react";
 
-export default function Navbar() {
+function Navbar() {
   const state: any = useSelector<any>((state) => state.toggled);
   const dispatch = useDispatch();
 
@@ -64,3 +65,5 @@ export default function Navbar() {
     </nav>
   );
 }
+
+export default memo(Navbar);

@@ -41,9 +41,8 @@ export default function Category() {
     navigate(`/category/form/${id}`);
   }
 
-  const { data, isError, isLoading, isSuccess } = useQuery(
-    "category",
-    getCategory
+  const { data, isError, isLoading, isSuccess } = useQuery("category", () =>
+    getCategory(10, 0)
   );
 
   const columns: any = useMemo(
@@ -93,7 +92,7 @@ export default function Category() {
               <h1 className="h3 mb-0 text-gray-800">Category</h1>
             </div>
             <div className="row">
-              <div className="col-sm-8">
+              <div className="col-sm-12">
                 <div className="mb-4">
                   <Button type="button" btnColor="primary" onClick={handleAdd}>
                     Add
@@ -105,7 +104,38 @@ export default function Category() {
                     <Spinner color="success" size="lg" />
                   </div>
                 )}
-                {isSuccess && <Table data={data} columns={columns} />}
+                {isSuccess && (
+                  <>
+                    <Table data={data} columns={columns} />
+                    <div className="mt-3">
+                      <nav>
+                        <ul className="pagination justify-content-end">
+                          <li className="page-item">
+                            <a className="page-link" href="#">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                          <li className="page-item disabled">
+                            <span className="page-link">Prev</span>
+                          </li>
+                          <li className="page-item">
+                            <a className="page-link" href="#">
+                              1
+                            </a>
+                          </li>
+                          <li className="page-item">
+                            <span className="page-link">Next</span>
+                          </li>
+                          <li className="page-item">
+                            <a className="page-link" href="#">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>

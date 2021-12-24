@@ -9,8 +9,10 @@ export async function createCategory(data: any) {
   return json;
 }
 
-export async function getCategory() {
-  const json = await ky.get(`${config.api}/category`).json();
+export async function getCategory(limit: number, skip: number) {
+  const json = await ky
+    .get(`${config.api}/category?limit=${limit}&skip=${skip}`)
+    .json();
   return json;
 }
 

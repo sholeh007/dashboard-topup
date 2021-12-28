@@ -48,6 +48,10 @@ export default function Category() {
   const columns: any = useMemo(
     () => [
       {
+        Header: "No.",
+        accessor: (_: any, i: number) => i + 1,
+      },
+      {
         Header: "Category",
         accessor: "name",
       },

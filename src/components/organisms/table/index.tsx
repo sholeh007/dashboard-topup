@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { useTable } from "react-table";
 
 interface propsType {
